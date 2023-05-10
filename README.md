@@ -37,6 +37,7 @@ at some of SalesPerson's functions. Like for example, if we're to change getValu
 SalesPerson's method like caclTotalSales. 
      
 ## (d) State the output after running this code. (4 points)
+<img src = "https://github.com/tirzagabriella/ForumWeek9-OOP/blob/main/src/images/output.jpg">
 
 ## (e) Construct the method calcTotalSales(), in the SalesPerson class that calculates the total value of the sales for a specific SalesPerson object. (5 points)
 (code can be seen at SalesPerson and Sales Class)
