@@ -49,8 +49,9 @@ SalesPerson's method like caclTotalSales.
 (code can be seen at Driver, SalesPerson, and Sales class) 
 
 ## A further class in this suite of programs is the Payroll class. This class is run at the end of each month to calculate each salesperson’s salary, which is based on the sales that have been made during that month.
-
 ## (h) Suggest changes that must be made to the SalesPerson class and/or the Sales class to allow these calculations to be made. (3 points)
+Both in the constructor and the class, a date variable must be added. For the date variable, getters and setters would be required. Date variable would require consideration in CalcTotal.
 
 ## (i) Discuss the use of polymorphism that occurs in this suite of programs. (3 points)
+The two constructors in the SalesPerson class, which is an example of overloading; the compiler executes the constructor, demonstrate this.
 
