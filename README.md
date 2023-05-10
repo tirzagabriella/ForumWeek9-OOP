@@ -21,15 +21,18 @@ We can use UI libraries to create UI or we can use Java's Array library to for a
 
 ## Each instance variable is initialized when a SalesPerson object is instantiated.
 ## (a) Complete the constructor public SalesPerson(String id), from the SalesPerson class. (2 points)
+```
 public SalesPerson(String id){
     this.id = id;
     this.salesHistory = new Sales[100];
 }
+```
 
 ## (b) Explain why accessor methods are necessary for the SalesPerson class. (3 points)
 Accessors are needed to get the attributes of the object once instantiated. 
 
 ## (c) (i) Construct unified modelling language (UML) diagrams to clearly show the relationship between the SalesPerson and Sales classes. (4 points)
+<img src = "https://github.com/tirzagabriella/ForumWeek9-OOP/blob/main/src/images/UML%20Diagram.jpg">
 
 ## (c) (ii) Outline a negative effect that a future change in the design of the Sales object might have on this suite of programs. (2 points)
 a change in the attributes might affect the accessor methods of the class. Other than that, any changes in the accessors will affect the class' usage after instantiation, and 
@@ -40,14 +43,48 @@ SalesPerson's method like caclTotalSales.
 <img src = "https://github.com/tirzagabriella/ForumWeek9-OOP/blob/main/src/images/output.jpg">
 
 ## (e) Construct the method calcTotalSales(), in the SalesPerson class that calculates the total value of the sales for a specific SalesPerson object. (5 points)
-(code can be seen at SalesPerson and Sales Class)
+(code can be seen at SalesPerson Class)
+```
+public double calcTotalSales(){
+    // calculates total sales for the salesperson
+    double totalSales = 0;
+    for(int i = 0; i < count; i++) {
+        totalSales += this.salesHistory[i].getValue() * this.salesHistory[i].getQuantity();
+    }
+    return totalSales;
+}
+```
 
 ## The salesPeople array contains 100 instantiated objects. The company wishes to reward the salesperson whose sales have the largest total value.
 ## (f) By making use of any previously written methods, construct the method highest(), that returns the ID of the salesperson whose sales have the largest total value. (5 points)
-(code can be seen at SalesPerson and Sales Class)
+(code can be seen at Driver Class)
+```
+public static SalesPerson highest(SalesPerson[] sp){
+    SalesPerson highestSp = null;
+    System.out.println("sp length: " + sp.length);
+    for(int i = 0; i < sp.length; i++) {
+        if(sp[i] != null){
+            if(highestSp == null || highestSp.calcTotalSales() < sp[i].calcTotalSales()) {
+                highestSp = sp[i];
+            }
+        }
+    }
+    return highestSp;
+}
+```
  
 ## (g) Construct the method addSales(Sales s, String id), in the Driver class, that will add a new Sales object s, to the salesperson with a specified ID. Note: You can assume that the ID is a valid one. (4 points)
-(code can be seen at Driver, SalesPerson, and Sales class) 
+(code can be seen at Driver class) 
+```
+public static void addSales(SalesPerson[] salesPeople, Sales s, String id) {
+    for(int i = 0; i < salesPeople.length; i++) {
+        if(salesPeople[i].getId() == id) {
+            salesPeople[i].setSalesHistory(s);
+            break;
+        }
+    }
+}
+```
 
 ## A further class in this suite of programs is the Payroll class. This class is run at the end of each month to calculate each salesperson’s salary, which is based on the sales that have been made during that month.
 ## (h) Suggest changes that must be made to the SalesPerson class and/or the Sales class to allow these calculations to be made. (3 points)
